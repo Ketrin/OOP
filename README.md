@@ -3,34 +3,39 @@
  
 using namespace std;
  
-class Matrix{
+class Matrix
+{
     public:
         Matrix operator+(Matrix);
         Matrix operator-(Matrix);
-        friend ostream& operator<<(ostream &out,Matrix x);
-        friend istream& operator>>(istream &in,Matrix x);
+        friend ostream& operator<<(ostream &out,Matrix a);
+        friend istream& operator>>(istream &in,Matrix a);
 private:
         vector< vector<int> > arr;
         int n,m;
 };
  
-ostream& operator<<(ostream &out,Matrix x){
+ostream& operator<<(ostream &out,Matrix a)
+{
     for(int i=0;i<x.n;i++){
         for(int j=0;j<x.m;j++)
             out<<x.arr[i][j]<<" ";
         out<<endl;
     }
-    out<<x.m<<" "<<x.n;
+    out<<x.m<<" "<<a.n;
 return out;
 }
  
-istream& operator>>(istream &in,Matrix x){
+istream& operator>>(istream &in,Matrix a)
+{
     in>>x.n;
     in>>x.m;
     int a;
-    for(int i=0;i<x.n;i++){
+    for(int i=0;i<x.n;i++)
+    {
         vector<int> row;
-        for(int j=0;j<x.m;j++){
+        for(int j=0;j<x.m;j++)
+        {
             in>>a;
             row.push_back(a);
         }
@@ -39,9 +44,11 @@ istream& operator>>(istream &in,Matrix x){
 return in;
 }
  
-Matrix Matrix::operator+(Matrix a){
+Matrix Matrix::operator+(Matrix a)
+{
     Matrix tmp;
-    for(int i=0;i<arr.size();i++){
+    for(int i=0;i<arr.size();i++)
+    {
         vector<int> row;
         for(int j=0;j<arr[i].size();j++)
             row.push_back(arr[i][j]+a.arr[i][j]);
@@ -50,9 +57,11 @@ Matrix Matrix::operator+(Matrix a){
 return tmp;
 }
  
-Matrix Matrix::operator-(Matrix a){
+Matrix Matrix::operator-(Matrix a)
+{
     Matrix tmp;
-    for(int i=0;i<arr.size();i++){
+    for(int i=0;i<arr.size();i++)
+    {
         vector<int> row;
         for(int j=0;j<arr[i].size();j++)
             row.push_back(arr[i][j]-a.arr[i][j]);
@@ -61,7 +70,8 @@ Matrix Matrix::operator-(Matrix a){
 return tmp;
 }
  
-int main(void){
+int main(void)
+{
     Matrix a;
     cin>>a;         
     cout<<a;
